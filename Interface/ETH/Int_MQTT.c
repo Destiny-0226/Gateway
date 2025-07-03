@@ -122,15 +122,15 @@ void Int_Mqtt_Yield()
 }
 
 // 通过mqtt发送数据到服务器
-void Int_Mqtt_SendData(const char *data)
+void Int_Mqtt_SendData(uint8_t *data)
 {
 
     MQTTMessage message;
-    message.dup        = 0;
-    message.qos        = QOS0;
-    message.retained   = 0;
-    message.payload    = (void *)data;
-    message.payloadlen = strlen(data);
+    // message.dup        = 0;
+    message.qos = QOS0;
+    // message.retained   = 0;
+    message.payload    = data;
+    message.payloadlen = strlen((char *)data);
     MQTTPublish(&c, PUSH_TOPIC, &message);
 }
 
