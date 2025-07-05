@@ -22,7 +22,7 @@ void APP_Modbus_Init(void)
 #define JSON_KEY_CURRENT_SPEED     "current_speed"
 #define JSON_KEY_TARGET_SPEED      "target_speed"
 
-uint8_t num = 0;
+    uint8_t num = 0;
 static void APP_Modbus_Callback(uint8_t *data, uint16_t datalen)
 {
     static cJSON *obj = NULL;
@@ -66,7 +66,6 @@ static void APP_Modbus_Callback(uint8_t *data, uint16_t datalen)
                     uint8_t target_direction = (input_data & 0x01) ? 1 : 0;
                     log_info("%d", target_direction);
                     cJSON_AddBoolToObject(obj, JSON_KEY_TARGET_DIRECTION, target_direction);
-                    // cJSON_AddNumberToObject(obj, JSON_KEY_TARGET_DIRECTION, target_direction);
                 }
             }
             break;
@@ -79,7 +78,6 @@ static void APP_Modbus_Callback(uint8_t *data, uint16_t datalen)
                 uint8_t current_direction = (input_data & 0x01) != 0;
                 log_info("%d", current_direction);
                 cJSON_AddBoolToObject(obj, JSON_KEY_CURRENT_DIRECTION, current_direction);
-                // cJSON_AddNumberToObject(obj, JSON_KEY_CURRENT_DIRECTION, current_direction);
             }
             break;
         }

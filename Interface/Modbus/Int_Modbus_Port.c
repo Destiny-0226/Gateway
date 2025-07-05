@@ -74,12 +74,18 @@ void Int_Modbus_Send(uint8_t *data, uint16_t len)
     HAL_Delay(1000); // 为了防止发送太快,导致电机板接收不到数据/发送不过来数据
 }
 
+void Int_Modbus_IRQ_Callback(uint16_t size)
+{
+    // 触发信号量
+    xSemaphoreGiveFromISR(modbus_msg_semaphore, NULL);
+    HAL_UARTEx_ReceiveToIdle_DMA(&huart2, recv_buf + current_write_index * RECV_BUFFER_SIZE, RECV_BUFFER_SIZE);
+}
+
 void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
 {
 
     if (huart->Instance == USART2) {
         if (huart->RxEventType == HAL_UART_RXEVENT_TC || huart->RxEventType == HAL_UART_RXEVENT_IDLE) {
-
             Int_Modbus_IRQ_Callback(Size); // rs485 callback
         }
     }

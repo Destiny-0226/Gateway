@@ -8,6 +8,13 @@
 TaskHandle_t MQTT_Task_Handle;
 void Mqtt_Task(void *pvParameters);
 
+// Modbus任务
+#define MODBUS_TASK_NAME       "MODBUS_TASK"
+#define MODBUS_TASK_STACK_SIZE 1024
+#define MODBUS_TASK_PRIORITY   4
+TaskHandle_t Modbus_Task_Handle;
+void Modbus_Task(void *pvParameters);
+
 void APP_Tasks_Start(void)
 {
     log_info(">>>>>>>>>>>>>>>>>>>>>>>>>> Tasks Start <<<<<<<<<<<<<<<<<<<<<<<<<<<");
@@ -31,4 +38,11 @@ void Mqtt_Task(void *pvParameters)
         APP_Mqtt_Receive();
         vTaskDelayUntil(&pxPreviousWakeTime, MQTT_TASK_CYCLES);
     }
+}
+
+
+// Modbus 任务
+void Modbus_Task(void *pvParameters){
+    // Modbus 初始化
+    Int_Modbus_Init(Modbus_Task_Handle);
 }

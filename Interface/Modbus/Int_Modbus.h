@@ -49,4 +49,7 @@ M_STATUS Int_Modbus_Write_Multiple_Register(uint8_t slave_addr, uint16_t start_r
 void Int_Modbus_RegisterCallback(MODBUS_FUNCTION_CODE code, void (*callback)(uint8_t *data, uint16_t datalen));
 void Int_ModBus_ReadHandle(uint8_t *data, uint8_t dataLen);
 
+void Int_Modbus_Receive(uint8_t *data, uint16_t len);
+
+
 #endif /* __INT_MODBUS_H__ */
