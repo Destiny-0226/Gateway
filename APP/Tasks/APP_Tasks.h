@@ -8,6 +8,7 @@
 #include "semphr.h"
 #include "APP_MQTT.h"
 #include "APP_Modbus.h"
+#include "Int_CAN.h"
 
 void APP_Tasks_Start(void);
 

@@ -2,6 +2,18 @@
     "folders": [
         {
             "path": "."
+        },
+        {
+            "path": "./APP"
+        },
+        {
+            "path": "./Interface"
+        },
+        {
+            "path": "./Common"
+        },
+        {
+            "path": "./Mid"
         }
     ],
     "settings": {

@@ -18,6 +18,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "can.h"
 #include "dma.h"
 #include "spi.h"
 #include "usart.h"
@@ -93,6 +94,7 @@ int main(void)
   MX_USART1_UART_Init();
   MX_SPI2_Init();
   MX_USART2_UART_Init();
+  MX_CAN_Init();
   /* USER CODE BEGIN 2 */
     // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>> FreeRTOS Start All Tsaks <<<<<<<<<<<<<<<<<<<<<<<<<<<<
     APP_Tasks_Start();

@@ -22,7 +22,7 @@ void APP_Modbus_Init(void)
 #define JSON_KEY_CURRENT_SPEED     "current_speed"
 #define JSON_KEY_TARGET_SPEED      "target_speed"
 
-    uint8_t num = 0;
+uint8_t num = 0;
 static void APP_Modbus_Callback(uint8_t *data, uint16_t datalen)
 {
     static cJSON *obj = NULL;

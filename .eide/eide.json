@@ -3,12 +3,10 @@
   "type": "ARM",
   "dependenceList": [],
   "srcDirs": [
+    "APP",
     "Common",
-    "Mid",
-    "Core/Src",
-    "Drivers/STM32F1xx_HAL_Driver/Src",
     "Interface",
-    "APP"
+    "Mid"
   ],
   "virtualFolder": {
     "name": "<virtual_root>",
@@ -39,6 +37,15 @@
                   },
                   {
                     "path": "Core/Src/gpio.c"
+                  },
+                  {
+                    "path": "Core/Src/can.c"
+                  },
+                  {
+                    "path": "Core/Src/dma.c"
+                  },
+                  {
+                    "path": "Core/Src/spi.c"
                   },
                   {
                     "path": "Core/Src/usart.c"
@@ -76,7 +83,7 @@
                 "path": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c"
               },
               {
-                "path": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c"
+                "path": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_can.c"
               },
               {
                 "path": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c"
@@ -107,6 +114,12 @@
               },
               {
                 "path": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c"
+              },
+              {
+                "path": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_spi.c"
+              },
+              {
+                "path": "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c"
               }
             ],
             "folders": []
@@ -133,7 +146,7 @@
   "deviceName": null,
   "packDir": null,
   "miscInfo": {
-    "uid": "bca6196b0a62fb62305326ba6bf21adb"
+    "uid": "8977aafa78fa23f1f3684738dfc4ea96"
   },
   "targets": {
     "Gateway": {
@@ -252,31 +265,19 @@
         },
         "options": "null"
       },
-      "uploader": "STLink",
+      "uploader": "JLink",
       "uploadConfig": {
         "bin": "",
-        "proType": "SWD",
-        "resetMode": "default",
-        "runAfterProgram": true,
-        "speed": 4000,
-        "address": "0x8000000",
-        "elFile": "None",
-        "optionBytes": ".eide/gateway.st.option.bytes.ini",
+        "baseAddr": "",
+        "cpuInfo": {
+          "vendor": "null",
+          "cpuName": "null"
+        },
+        "proType": 1,
+        "speed": 8000,
         "otherCmds": ""
       },
-      "uploadConfigMap": {
-        "JLink": {
-          "bin": "",
-          "baseAddr": "",
-          "cpuInfo": {
-            "vendor": "null",
-            "cpuName": "null"
-          },
-          "proType": 1,
-          "speed": 8000,
-          "otherCmds": ""
-        }
-      },
+      "uploadConfigMap": {},
       "custom_dep": {
         "name": "default",
         "incList": [
@@ -300,11 +301,11 @@
           "beforeBuildTasks": [],
           "afterBuildTasks": [],
           "global": {
-            "output-debug-info": "enable",
-            "use-microLIB": true
+            "use-microLIB": true,
+            "output-debug-info": "enable"
           },
           "c/cpp-compiler": {
-            "optimization": "level-1",
+            "optimization": "level-0",
             "one-elf-section-per-function": true,
             "c99-mode": true,
             "C_FLAGS": "--diag_suppress=1 --diag_suppress=1295",
@@ -313,7 +314,10 @@
           },
           "asm-compiler": {},
           "linker": {
-            "output-format": "elf"
+            "output-format": "elf",
+            "xo-base": "",
+            "ro-base": "",
+            "rw-base": ""
           }
         }
       }

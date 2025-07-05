@@ -490,5 +490,5 @@ static uint16_t Int_Modbus_CRC(const uint8_t *data, uint16_t length)
 
 void Int_Modbus_Receive(uint8_t *data, uint16_t len)
 {
-    Int_ModBus_ReadHandle(data, len);
+    // Int_ModBus_ReadHandle(data, len);
 }
